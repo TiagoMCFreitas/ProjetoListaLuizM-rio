@@ -43,6 +43,8 @@ public class Lista {
 		}
 		this.tamanhoLista++;
 	}// fim do m�todo insereNoFim
+
+	//Insere na posi��o informada
 	public void inserirNaPosicao(int posicao,Object elemento)throws Exception{
 		if(posicao == 0){
 			ListaNo novoNo = new ListaNo(elemento);
@@ -61,7 +63,7 @@ public class Lista {
 		}
 		this.tamanhoLista++;
 	}
-
+//fim do metodo insereNaPosicao
 
 
 	private ListaNo recuperarNo(int posicao)throws Exception{
@@ -87,13 +89,7 @@ public class Lista {
 	
 }
 
-	//Insere na posi��o informada
-	public void insertAtPosicao(int posicao, Object elemento) {
-		if(estaVazia())	{
-		primeiroNo = ultimoNo = new ListaNo(elemento);
-		}	
-		
-	}
+	
 	
 	// remove o primeiro n� de List
 	public Object removeNoInicio() throws EmptyListException {
