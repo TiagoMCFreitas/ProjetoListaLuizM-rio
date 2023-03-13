@@ -52,14 +52,15 @@ public class Lista {
 			this.primeiroNo = novoNo;
 		}else if(posicao == this.tamanhoLista - 1){
 			ListaNo novoNo = new ListaNo(elemento);
-			this.ultimoNo.setProximoNo(novoNo);
-			this.ultimoNo = novoNo;
+			ultimoNo.setProximoNo(novoNo);
+			ultimoNo = ultimoNo.proximoNo = novoNo;
 		}else{
 			ListaNo noAnterior = recuperarNo(posicao - 1);
 			ListaNo noAtual = recuperarNo(posicao);
 			ListaNo novoNo = new ListaNo(elemento);
 			noAnterior.setProximoNo(novoNo);
 			novoNo.setProximoNo(noAtual);
+			ultimoNo = novoNo;
 		}
 		this.tamanhoLista++;
 	}
@@ -135,14 +136,48 @@ public class Lista {
 		this.tamanhoLista--;
 		return removedItem; //retorna dados de n� removidos
 	}//fim do m�todo removeNoFim
-	
+	public void removerPorElemento(Object elemento)throws Exception{
+		int indice=  localizarIndice(elemento);
+		if(indice == -1){
+			throw new Exception("Posicao invalida");
 
-	/*public Object removeFromPosicao(int posicao) throws EmptyListException {
-		
-		
-		return null;
-	}*/
-	
+		}
+		removeFromPosicao(indice);
+	}
+
+
+	private int localizarIndice(Object elemento) throws Exception{
+		for(int i = 0; i < this.tamanhoLista;i++){
+			ListaNo noAtual = recuperarNo(i);
+			if(noAtual.getData()!= null && noAtual.getData().equals(elemento) ){
+				return i;
+			}
+		}
+		return -1;
+	}
+
+
+	public Object removeFromPosicao(int posicao) throws EmptyListException, Exception {
+	if(posicao >=this.tamanhoLista){
+		throw new EmptyListException("Posicao invalida");
+	}
+	else if(posicao == 0){
+		ListaNo noDafrente = this.primeiroNo.getProximoNo();
+		this.primeiroNo = noDafrente;
+	}else if(posicao == this.tamanhoLista - 1)	{
+		ListaNo penultimoNo = recuperarNo(this.tamanhoLista - 2);
+		ultimoNo = penultimoNo;
+	}else {
+		ListaNo noAnterior = recuperarNo(posicao - 1);
+		ListaNo proximoNo = recuperarNo(posicao + 1);
+		ListaNo noAtual = recuperarNo(posicao);
+		noAnterior.setProximoNo(proximoNo);
+		noAtual.setProximoNo(null);
+	}
+	return this.tamanhoLista--;
+	}
+
+
 	
 	public boolean buscaElemento(Object elemento) {
 		boolean aux = false;
