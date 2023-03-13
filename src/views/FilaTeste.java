@@ -1,9 +1,10 @@
-package br.com.listas;
+package views;
+import models.*;
 
 public class FilaTeste {
 	public static void main(String[] args) {
 		Fila queue = new Fila();
-		// utiliza o método enqueue
+		// utiliza o mï¿½todo enqueue
 		queue.enfileira(-1);
 		queue.print();
 		queue.enfileira(0);
@@ -18,8 +19,8 @@ public class FilaTeste {
 		try {
 			Object removedObject = null;
 			while (true) {
-				removedObject = queue.desenfileira();// utiliza método dequeue
-				System.out.printf("%s saiu da Fila, próximo poderá ser atendido\n",	removedObject);
+				removedObject = queue.desenfileira();// utiliza mï¿½todo dequeue
+				System.out.printf("%s saiu da Fila, prï¿½ximo poderï¿½ ser atendido\n",	removedObject);
 				queue.print();
 			}// fim do while
 		}// fim de try

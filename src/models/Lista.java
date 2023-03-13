@@ -146,7 +146,7 @@ public class Lista {
 	}
 
 
-	private int localizarIndice(Object elemento) throws Exception{
+	public int localizarIndice(Object elemento) throws Exception{
 		for(int i = 0; i < this.tamanhoLista;i++){
 			ListaNo noAtual = recuperarNo(i);
 			if(noAtual.getData()!= null && noAtual.getData().equals(elemento) ){

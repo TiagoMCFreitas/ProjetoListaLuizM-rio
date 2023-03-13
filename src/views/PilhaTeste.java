@@ -1,9 +1,10 @@
-package br.com.listas;
+package views;
+import models.*;
 
 public class PilhaTeste {
 	public static void main(String[] args) {
 		Pilha stack = new Pilha();
-		// utliza método push
+		// utliza mï¿½todo push
 		stack.empilha(-1);
 		stack.print();
 		stack.empilha(0);
@@ -16,7 +17,7 @@ public class PilhaTeste {
 		try {
 			Object removedObject = null;
 			while (true) {
-				removedObject = stack.desempilha();// utiliza o método pop
+				removedObject = stack.desempilha();// utiliza o mï¿½todo pop
 				System.out.printf("%s removido da pilha\n", removedObject);
 				stack.print();
 			}// fim do While
