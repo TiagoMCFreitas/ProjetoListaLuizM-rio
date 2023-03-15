@@ -6,6 +6,7 @@ public class ListaTeste {
 		Scanner leia = new Scanner(System.in);
 		Lista list = new Lista(); // cria o cont�iner de List
 		int selecaoServico = 5;
+
 		int selecaoMicroServico;
 		// insere inteiros na lista
 		try{
@@ -13,14 +14,24 @@ public class ListaTeste {
 		System.out.println("**********************************");
 		System.out.println("Siga as instruções para acessar aos nossos serviços");
 			do {
-				selecaoMicroServico = 0;
-				if(selecaoServico == 5){
-				System.out.println("(1) Inserir Novo elemento" + "\n");
-				System.out.println("(2) Remover Elemento" + "\n");
-				System.out.println("(3) Buscar elemento" + "\n");
-				System.out.println("(4) Imprimir elementos" + "\n");
-				System.out.println("(0) Sair do programa da Lista");
-				selecaoServico = leia.nextInt();
+				selecaoServico = 5;
+		
+				 selecaoMicroServico = 0;
+					if(selecaoServico == 5){
+					System.out.println("(1) Inserir Novo elemento" + "\n");
+					System.out.println("(2) Remover Elemento" + "\n");
+					System.out.println("(3) Buscar elemento" + "\n");
+					System.out.println("(4) Imprimir elementos" + "\n");
+					System.out.println("(0) Sair do programa da Lista");
+					selecaoServico = leia.nextInt();
+					while(selecaoServico != 1 && selecaoServico != 2 && selecaoServico != 3 && selecaoServico != 4 && selecaoServico != 0){
+						System.out.println("(1) Inserir Novo elemento" + "\n");
+						System.out.println("(2) Remover Elemento" + "\n");
+						System.out.println("(3) Buscar elemento" + "\n");
+						System.out.println("(4) Imprimir elementos" + "\n");
+						System.out.println("(0) Sair do programa da Lista");
+						selecaoServico = leia.nextInt();
+					}	
 				}
 				if(selecaoServico == 1){
 					System.out.println("Você clicou na opção 'Inserir novo Elemento'");
@@ -30,6 +41,8 @@ public class ListaTeste {
 					System.out.println("(3)Inserir por posição");
 					
 					selecaoMicroServico = leia.nextInt();
+					
+					
 					while(selecaoMicroServico == 1){
 						System.out.println("Digite o valor para inserir no início");
 						Object elemento = leia.nextInt();
@@ -42,8 +55,10 @@ public class ListaTeste {
 						System.out.println("Deseja inserir mais elementos? (1)Sim (5)Não");
 						selecaoServico = leia.nextInt();
 						selecaoMicroServico = 0;
+						
 					}
 					while(selecaoMicroServico == 2){
+							
 						System.out.println("Digite o valor para inserir no fim");
 						Object elemento = leia.nextInt();
 						while(list.buscaElemento(elemento)){
@@ -52,11 +67,14 @@ public class ListaTeste {
 						}
 						list.insereNoFim(elemento);
 						list.print();
+						
 						System.out.println("Deseja inserir mais elementos? (1)Sim (5)Não");
 						selecaoServico = leia.nextInt();
 						selecaoMicroServico = 0;
+				
 					}
 					while(selecaoMicroServico == 3){
+					try{
 						System.out.println("Digite o valor para inserir na posicao: ");
 						Object elemento = leia.nextInt();
 						while(list.buscaElemento(elemento)){
@@ -66,11 +84,15 @@ public class ListaTeste {
 						System.out.println("Digite a posição que deseja inserir: ");
 						System.out.println("Lista comeca com a posicao 0");
 						int posicao = leia.nextInt();
+						
 						list.inserirNaPosicao(posicao, elemento);
 						list.print();
 						System.out.println("Deseja inserir mais elementos? (1)Sim (5)Não");
 						selecaoServico = leia.nextInt();
-						selecaoMicroServico = 0;						
+						selecaoMicroServico = 0;	
+					}catch(Exception e){
+						System.out.println(e.getMessage());
+					}					
 					}
 				}
 				  if(selecaoServico == 2){
@@ -110,6 +132,7 @@ public class ListaTeste {
 						selecaoServico = leia.nextInt();
 						selecaoMicroServico = 0;					}
 					while(selecaoMicroServico == 4){
+						try{
 						list.print();
 						System.out.println("Digite a posicao do item a ser removido: ");
 						int posicao = leia.nextInt();
@@ -119,6 +142,9 @@ public class ListaTeste {
 						System.out.println("Deseja remover mais elementos? (2)Sim (5)Não");
 						selecaoServico = leia.nextInt();
 						selecaoMicroServico = 0;		
+						}catch(Exception e){
+							System.out.println(e.getMessage());
+						}
 					}
 				}
 				if(selecaoServico == 3){
@@ -132,6 +158,10 @@ public class ListaTeste {
 					}
 					System.out.println("Deseja procurar mais algum elemento e sua posição? (3)Sim (5)Não");
 					selecaoServico = leia.nextInt();
+					while(selecaoServico != 3 && selecaoServico != 5){
+						System.out.println("Valor Inserido Errado, digite (3)Sim (5)Não");
+						selecaoServico = leia.nextInt();
+					}
 
 				}
 				if(selecaoServico == 4){
@@ -145,6 +175,8 @@ public class ListaTeste {
 			leia.close();
 		}catch(Exception e ){
 			System.out.println(e);
+	
 		}
+	
 	}// fim de main
 }// fim da classe ListTest
